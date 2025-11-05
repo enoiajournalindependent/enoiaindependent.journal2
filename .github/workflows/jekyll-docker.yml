@@ -1,0 +1,18 @@
+enoia-journal/
+ ├── index.html                 ← halaman utama (daftar volume & issue)
+ ├── volume1/
+ │    ├── index.html            ← daftar issue Vol 1
+ │    ├── issue1/
+ │    │    ├── index.html       ← daftar artikel Issue 1 Vol 1
+ │    │    ├── article1.html    ← artikel contoh
+ │    │    ├── article2.html
+ │    │    └── ...
+ │    └── issue2/
+ │         └── ...
+ └── volume2/
+      └── ...
+ └── assets/
+      └── style.css             ← styling globa
+        docker run \
+        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
